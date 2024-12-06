@@ -9,16 +9,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Reports {
-    public static void main(String[] args) {
-        try {
-            var lines = getInput(Paths.get("input.txt"));
-            var reports = listOfReports(lines);
-            safeReports(reports);
-
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-
+    public static void main(String[] args) throws IOException {
+        var lines = getInput(Paths.get("Day2\\input.txt"));
+        var reports = listOfReports(lines);
+        safeReports(reports);
     }
 
     private static List<String> getInput(Path input) throws IOException {
@@ -38,7 +32,7 @@ public class Reports {
         return result;
     }
 
-    public static boolean isSafeReport(List<Integer> report) {
+    private static boolean isSafeReport(List<Integer> report) {
         boolean isIncreasing = report.get(1) > report.get(0);
 
         for (int i = 1; i < report.size(); i++) {
